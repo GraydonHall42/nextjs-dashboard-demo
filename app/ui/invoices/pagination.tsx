@@ -17,10 +17,12 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
         return `${pathname}?${params.toString()}`;
     };
 
+    // util function to generate the page numbers we want to show
     const allPages = generatePagination(currentPage, totalPages);
 
   return (
     <>
+      {/* arrows + page numbers */}
       <div className="inline-flex">
         <PaginationArrow
           direction="left"
