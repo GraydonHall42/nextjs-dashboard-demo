@@ -1,4 +1,6 @@
 // Loading animation
+import Pagination from "@/app/ui/invoices/pagination";
+
 const shimmer =
   'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent';
 
@@ -212,6 +214,11 @@ export function InvoicesTableSkeleton() {
             </tbody>
           </table>
         </div>
+          <div className="mt-5 flex w-full justify-center gap-5">
+              <div className="h-10 w-10 rounded bg-gray-100"></div>
+              <div className="h-10 w-[120px] rounded bg-gray-100"></div>
+              <div className="h-10 w-10 rounded bg-gray-100"></div>
+          </div>
       </div>
     </div>
   );
