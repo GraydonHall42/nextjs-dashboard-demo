@@ -93,6 +93,8 @@ export async function fetchFilteredInvoices(
 ) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   try {
     const invoices = await sql<InvoicesTable[]>`
       SELECT
@@ -123,6 +125,8 @@ export async function fetchFilteredInvoices(
 }
 
 export async function fetchInvoicesPages(query: string) {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   try {
     const data = await sql`SELECT COUNT(*)
     FROM invoices
