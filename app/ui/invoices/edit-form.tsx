@@ -6,6 +6,7 @@ import {CheckIcon, ClockIcon, CurrencyDollarIcon, UserCircleIcon,
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import { updateInvoice } from '@/app/lib/actions';
+import {useFormStatus} from "react-dom";
 
 export default function EditInvoiceForm({
   invoice,
@@ -115,8 +116,18 @@ export default function EditInvoiceForm({
         >
           Cancel
         </Link>
-        <Button type="submit">Edit Invoice</Button>
+        <SubmitButton/>
       </div>
     </form>
   );
+}
+
+function SubmitButton() {
+  const status = useFormStatus();
+  return <Button
+      type="submit"
+      disabled={status.pending}
+  >
+    { status.pending ? 'Editing Invoice...' : 'Editing Invoice'}
+  </Button>
 }

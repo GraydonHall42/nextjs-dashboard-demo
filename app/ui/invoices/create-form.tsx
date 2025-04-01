@@ -1,13 +1,11 @@
+'use client'
+
 import { CustomerField } from '@/app/lib/definitions';
 import Link from 'next/link';
-import {
-  CheckIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
-  UserCircleIcon,
-} from '@heroicons/react/24/outline';
+import {CheckIcon, ClockIcon, CurrencyDollarIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 import { createInvoice } from '@/app/lib/actions';
+import {useFormStatus} from "react-dom";
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   return (
@@ -106,8 +104,18 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         >
           Cancel
         </Link>
-        <Button type="submit">Create Invoice</Button>
+        <SubmitButton/>
       </div>
     </form>
   );
+}
+
+function SubmitButton() {
+  const status = useFormStatus();
+  return <Button
+      type="submit"
+      disabled={status.pending}
+  >
+    { status.pending ? 'Creating Invoice...' : 'Create Invoice'}
+  </Button>
 }
