@@ -10,6 +10,8 @@ import {useFormStatus} from "react-dom";
 export default function Form({ customers }: { customers: CustomerField[] }) {
   return (
     <form action={createInvoice}>
+
+      {/* Form with fields for customer, invoice amount, and invoice status */}
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
@@ -97,6 +99,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           </div>
         </fieldset>
       </div>
+
       <div className="mt-6 flex justify-end gap-4">
         <Link
           href="/dashboard/invoices"
@@ -112,10 +115,8 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
 
 function SubmitButton() {
   const status = useFormStatus();
-  return <Button
-      type="submit"
-      disabled={status.pending}
-  >
+
+  return <Button type="submit" disabled={status.pending}>
     { status.pending ? 'Creating Invoice...' : 'Create Invoice'}
   </Button>
 }
